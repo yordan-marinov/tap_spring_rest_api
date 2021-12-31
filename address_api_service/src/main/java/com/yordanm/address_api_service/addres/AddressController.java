@@ -1,10 +1,10 @@
 package com.yordanm.address_api_service.addres;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class AddressController {
@@ -17,31 +17,24 @@ public class AddressController {
         this.addressService = addressService;
     }
 
-    @GetMapping("/api/resource/addresses")
-    public List<Address> getAllAddresses() {
-        return addressService.getAll();
+    @GetMapping("/api/resources/users/{id}/addresses")
+    private List<Address> getUserAddresses(@PathVariable UUID id){
+        return addressService.getAll(id);
     }
 
-    @GetMapping("api/resource/address/{id}")
-    public Address getOneAddress(@PathVariable Long id) throws ChangeSetPersister.NotFoundException {
-        return addressService.getOneByID(id);
-    }
-
-    @PostMapping("api/resource/address")
-    public void addNewAddress(@RequestBody Address address){
+    @PostMapping("/api/resources/addresses")
+    private void addNewAddress(@RequestBody Address address){
         addressService.addAddress(address);
-
     }
 
-    @PutMapping("api/resource/address/{id}")
-    public void updateAddressByID(@RequestBody Address newAddress, @PathVariable Long id){
-        addressService.updateAddress(newAddress, id);
+    @PutMapping("/api/resources/users/{userid}/addresses/{id}")
+    private void updateAddresses(@RequestBody Address address){
+        addressService.update(address);
     }
 
-    @DeleteMapping("api/resource/address/{id}")
-    public void deleteAddressByID(@PathVariable Long id){
-        addressService.deleteAddress(id);
+    @DeleteMapping("/api/resources/users/{userid}/addresses/{id}")
+    private void deleteAddresses(@PathVariable Long id){
+        addressService.delete(id);
     }
-
 
 }

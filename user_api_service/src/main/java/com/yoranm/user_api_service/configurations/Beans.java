@@ -1,4 +1,4 @@
-package com.yoranm.user_api_service.configurarations;
+package com.yoranm.user_api_service.configurations;
 
 import com.yoranm.user_api_service.constants.Constants;
 import org.springframework.context.annotation.Bean;

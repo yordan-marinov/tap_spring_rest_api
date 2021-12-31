@@ -3,8 +3,7 @@ package com.yordanm.address_api_service.addres;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
@@ -12,8 +11,15 @@ import java.util.UUID;
 public class Address {
 
     @Id
-    private UUID id;
-    private String street_name;
-    private int house_number;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column(nullable = false)
+    private UUID userId;
+    @Column(nullable = false)
+    private String streetName;
+    @Column(nullable = false)
+    private Integer houseNumber;
+    @Column(nullable = false)
     private String city;
 }

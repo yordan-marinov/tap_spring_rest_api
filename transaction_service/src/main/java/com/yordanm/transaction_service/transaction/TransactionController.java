@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/resource/transactions")
 public class TransactionController {
 
     private final TransactionService transactionService;
@@ -16,14 +15,24 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
-    @GetMapping
-    List<Transaction> getAll(){
-        return transactionService.getAllTransactions();
+    @GetMapping("/api/resources/users/{userId}/transactions")
+    public List<Transaction> getAll(@PathVariable String userId){
+        return transactionService.getAllTransactions(userId);
     }
 
-    @PostMapping
-    Transaction makeTransaction(@RequestBody Transaction transaction){
-        return transactionService.createTransaction(transaction);
+    @PostMapping("/api/resources/transactions")
+    public void makeTransaction(@RequestBody Transaction transaction){
+        transactionService.createTransaction(transaction);
+    }
+
+    @PutMapping("/api/resources/users/{userId}/transactions/{id}")
+    public void updateTransaction(@RequestBody Transaction transaction, @PathVariable Long id){
+        transactionService.update(transaction, id);
+    }
+
+    @DeleteMapping("/api/resources/users/{userId}/transactions/{id}")
+    public void deleteTransaction(@PathVariable Long id){
+        transactionService.delete(id);
     }
 
 }
