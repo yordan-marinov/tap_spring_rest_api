@@ -27,7 +27,7 @@ public class TransactionService {
     }
 
     public void update(Transaction transaction, Long id) {
-        if (transactionRepository.existsById(id)){
+        if (transactionRepository.existsById(id)) {
             transactionRepository.save(transaction);
         }
     }

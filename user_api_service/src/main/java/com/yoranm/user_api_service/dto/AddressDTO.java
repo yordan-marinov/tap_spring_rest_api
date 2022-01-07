@@ -11,7 +11,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class AddressDTO {
 
-//    private UUID userId;
+    //    private UUID userId;
     private String streetName;
     private Integer houseNumber;
     private String city;

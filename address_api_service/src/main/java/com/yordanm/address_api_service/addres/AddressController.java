@@ -18,22 +18,22 @@ public class AddressController {
     }
 
     @GetMapping("/api/resources/users/{id}/addresses")
-    private List<Address> getUserAddresses(@PathVariable UUID id){
+    private List<Address> getUserAddresses(@PathVariable UUID id) {
         return addressService.getAll(id);
     }
 
     @PostMapping("/api/resources/addresses")
-    private void addNewAddress(@RequestBody Address address){
+    private void addNewAddress(@RequestBody Address address) {
         addressService.addAddress(address);
     }
 
     @PutMapping("/api/resources/users/{userid}/addresses/{id}")
-    private void updateAddresses(@RequestBody Address address){
+    private void updateAddresses(@RequestBody Address address) {
         addressService.update(address);
     }
 
     @DeleteMapping("/api/resources/users/{userid}/addresses/{id}")
-    private void deleteAddresses(@PathVariable Long id){
+    private void deleteAddresses(@PathVariable Long id) {
         addressService.delete(id);
     }
 

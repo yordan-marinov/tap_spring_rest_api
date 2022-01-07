@@ -1,25 +1,26 @@
 version: "3"
 services:
-  addresses:
+  transactions:
     build: .
-    container_name: addresses
+    container_name: transactions
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/testdb
+      SPRING_DATASOURCE_URL: jdbc:postgresql://transactionsdb:5432/testdb
     ports:
-      - 8082:8080
+      - 8083:8080
     restart: always
     depends_on:
-      - db
-  db:
+      - transactionsdb
+
+  transactionsdb:
     image: postgres
-    container_name: db
+    container_name: transactionsdb
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=testdb
       - PGDATA=/var/lib/postgresql/data/pgdata
     ports:
-      - 5000:5432
+      - 5001:5432
     volumes:
       - pgdata:/var/lib/postgresql/data
     restart: always

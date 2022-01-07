@@ -19,8 +19,8 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping ("/api/resources/user")
-    public UserDTO createNewUser(@RequestBody CreateUserRequestBody createUserRequestBody){
+    @PostMapping("/api/resources/user")
+    public UserDTO createNewUser(@RequestBody CreateUserRequestBody createUserRequestBody) {
         User user = createUserRequestBody.getUser();
         AddressDTO addressDTO = createUserRequestBody.getAddress();
         TransactionDTO transactionDTO = createUserRequestBody.getTransaction();

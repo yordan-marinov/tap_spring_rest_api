@@ -12,6 +12,6 @@ import java.util.UUID;
 @AllArgsConstructor
 public class TransactionDTO {
 
-//    private UUID userId;
+    //    private UUID userId;
     private int amount;
 }

@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.List;
 import java.util.UUID;
 
-@ Data
+@Data
 public class UserDTO {
 
     private UUID userId;

@@ -17,7 +17,7 @@ public class IdController {
     }
 
     @GetMapping("/api/resources/id")
-    public HashMap<String, String> getId(){
+    public HashMap<String, String> getId() {
         return idService.getCurrentId();
     }
 

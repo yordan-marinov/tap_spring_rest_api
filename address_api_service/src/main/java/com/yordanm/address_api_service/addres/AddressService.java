@@ -18,7 +18,7 @@ public class AddressService {
     }
 
     public void addAddress(Address address) {
-            addressRepository.save(address);
+        addressRepository.save(address);
     }
 
     public List<Address> getAll(UUID userId) {

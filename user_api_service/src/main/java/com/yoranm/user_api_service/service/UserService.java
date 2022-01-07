@@ -60,7 +60,7 @@ public class UserService {
     }
 
     private void addTransaction(TransactionDTO transactionDto, UUID userId) {
-        Transaction transaction = createTransactionModel (transactionDto, userId);
+        Transaction transaction = createTransactionModel(transactionDto, userId);
         restTemplate.postForObject(
                 Constants.BASE_POST_ADDRESS_URI,
                 transaction,
