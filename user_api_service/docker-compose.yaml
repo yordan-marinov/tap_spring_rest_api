@@ -1,0 +1,24 @@
+version: "3"
+services:
+  userservice:
+    build: .
+    container_name: userservice
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/testdb
+    ports:
+      - 8080:8080
+    restart: always
+    depends_on:
+      - address
+  address:
+    image: address
+    container_name: addresses
+    ports:
+      - 8082:8082
+    restart: always
+  transactions:
+    image: transactions
+    container_name: transactions
+    ports:
+      - 8083:8083
+    restart: always
